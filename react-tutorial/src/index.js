@@ -2,35 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // CSS
+import "./index.css";
+
+import { books } from "./books";
+import SpecificBook from "./Book";
 
 function BookList() {
   return (
-    <section>
-      <Book />
-      <Book />
-      <Book />
+    <section className="booklist">
+      {books.map((book, index) => {
+        return <SpecificBook key={book.id} {...book}></SpecificBook>;
+      })}
     </section>
   );
 }
-
-const Book = () => {
-  return (
-    <article>
-      <Image />
-      <Title />
-      <Author />
-    </article>
-  );
-};
-const Image = () => (
-  <img
-    src="https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL600_SR600,400_.jpg"
-    alt=""
-  />
-);
-
-const Title = () => <h1>I Love You to the Moon and Back</h1>;
-
-const Author = () => <h4>Amelia Hepworth</h4>;
 
 ReactDOM.render(<BookList />, document.getElementById("root"));
